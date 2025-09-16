@@ -1,0 +1,6 @@
+---
+- name: working with ansible
+  hosts: all
+  tasks: 
+    name: working with command
+    command: echo "welcome to dvs"
