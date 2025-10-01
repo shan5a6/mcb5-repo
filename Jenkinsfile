@@ -1,16 +1,22 @@
 pipeline {
   agent any //any, slave1, docker, kubernetes .. 
   stages {
-    stage('working with conditions') {
+    stage('working with loops') {
       steps {
         script {
-          a=100
-          b=20
-          if(a>b) {
-            println "a is big ${a}"
+          list1=[10,20,30,40]
+          for(i in list1) {
+            println "my list value is ${i}"
           }
-          else {
-            println "b is big ${b}"
+
+          for(i=1;i<=5;i++) {
+            println "my i value  is ${i}"
+          }
+
+          j=10
+          while(j<=15) {
+            println "my j value is ${j}"
+            j=j+1
           }
         }
       }
