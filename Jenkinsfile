@@ -1,19 +1,17 @@
 pipeline {
   agent any //any, slave1, docker, kubernetes .. 
-  environment {
-    JAVA_HOME = "/opt/bin/java"
-  }
-  parameters {
-    choice choices: ['dev', 'prod'], description: 'Select the environment', name: 'ENV'
-  }  
   stages {
-    stage('working with variables') {
+    stage('working with conditions') {
       steps {
         script {
-          batchno=5
-          println "my batchno is ${batchno}"
-          println "my java home variable value is ${env.JAVA_HOME}"
-          println "my selected environment is ${params.ENV}"
+          a=100
+          b=20
+          if(a>b) {
+            println "a is big ${a}"
+          }
+          else {
+            println "b is big ${b}"
+          }
         }
       }
     }
