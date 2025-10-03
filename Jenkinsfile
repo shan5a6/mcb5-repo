@@ -1,21 +1,19 @@
-def myfn() {
-  println "welcome to functions"
-}
-def myadd(a,b) {
-  sum = a+b
-  println "sum of ${a} and ${b} is ${sum}"
-}
 pipeline {
-  agent any //any, slave1, docker, kubernetes .. 
+  /*agent server1/docker/kubernetes/any*/
+  agent any 
   stages {
-    stage('working with loops') {
+    stage('git checkout') {
       steps {
         script {
-          myfn()
-          myadd(100,200)
-          myadd(400,500)
+          File file = new File("/opt/mydata.txt")
+          def lines = file.readLines()
+          //["Hi i am line1","Hi i am line2","Hi i am line3"]
+          println "Lines\n ${lines}"
+          for (line in lines) {
+            println "myline is ${line}"
+          }
         }
       }
     }
-  }
+  } 
 }
